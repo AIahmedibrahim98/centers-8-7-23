@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained();
+            $table->foreignId('user_id')->nullable()->unique()->constrained();
             $table->string('job_title');
             $table->decimal('salary', 8, 2);
             $table->date('hire_date')->nullable();

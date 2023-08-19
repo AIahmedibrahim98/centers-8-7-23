@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('mobile');
-            $table->foreignId('company_id')->unique()->constrained();
+            $table->foreignId('company_id')->nullable()->unique()->constrained();
             $table->timestamps();
         });
     }
