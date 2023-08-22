@@ -17,7 +17,7 @@ return new class extends Migration
             $table->dateTime('to');
             $table->foreignId('course_id')->constrained();
             $table->foreignId('class_room_id')->constrained();
-            $table->foreignId('user_id')->constrained(); // Users Only with Type Instractor
+            $table->foreignId('user_id')->constrained(); // Users Only with Type Instructor
             $table->timestamps();
         });
     }

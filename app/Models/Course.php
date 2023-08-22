@@ -22,7 +22,7 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'user_schedules');
     }
-    public function instractors()
+    public function instructors()
     {
         return $this->belongsToMany(User::class, 'schedules');
     }

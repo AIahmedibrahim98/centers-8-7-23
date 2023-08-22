@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('class_rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('configration', 2000);
+            $table->string('configuration', 2000);
             $table->integer('capacity')->default(15);
             $table->foreignId('branch_id')->constrained();
             $table->timestamps();
