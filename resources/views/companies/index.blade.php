@@ -9,6 +9,23 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <div class="flex justify-end">
+                        <div>
+                            <x-primary-link class="bg-blue-700" href="{{ route('companies.create') }}">Add New
+                                Company</x-primary-link>
+                        </div>
+                    </div>
+                    <form action="{{ route('companies.index') }}">
+                        <div class="flex justify-evenly">
+                            <div>
+                                <x-input-label for='Search By Name'>Search By Name Or Owner</x-input-label>
+                                <x-text-input name='search'></x-text-input>
+                            </div>
+                            <div class="mt-5">
+                                <x-primary-button type='submit'>Search</x-primary-button>
+                            </div>
+                        </div>
+                    </form>
                     <!-- component -->
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -40,11 +57,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($companies as $company)
+                                            @forelse ($companies as $key => $company)
                                                 <tr class="bg-gray-100 border-b">
                                                     <td
                                                         class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                        {{ $loop->iteration }}</td>
+                                                        {{ $key + $companies->firstItem() }}</td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
                                                         {{ $company->name }}
@@ -74,6 +91,8 @@
                             </div>
                         </div>
                     </div>
+                    {{ $companies->links() }}
+                    {{-- {{ $companies->links('pagination::simple-tailwind') } --}}
                 </div>
             </div>
         </div>

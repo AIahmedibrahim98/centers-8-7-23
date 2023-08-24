@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('companies')->as('companies.')->group(function () {
         Route::get('/', [CompanyController::class, 'index'])->name('index');
+        Route::get('/create', [CompanyController::class, 'create'])->name('create');
+        Route::post('/store', [CompanyController::class, 'store'])->name('store');
     });
 });
 
