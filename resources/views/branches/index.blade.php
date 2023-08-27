@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Companies
+            Branches
         </h2>
     </x-slot>
 
@@ -12,8 +12,8 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-end">
                         <div>
-                            <x-primary-link class="bg-blue-700" href="{{ route('companies.create') }}">Add New
-                                Company</x-primary-link>
+                            <x-primary-link class="bg-blue-700" href="{{ route('branches.create') }}">Add New
+                                Branch</x-primary-link>
                         </div>
                     </div>
                     <!-- component -->
@@ -56,17 +56,7 @@
                         @endif
 
                     </div>
-                    <form action="{{ route('companies.index') }}">
-                        <div class="flex justify-evenly">
-                            <div>
-                                <x-input-label for='Search By Name'>Search By Name Or Owner</x-input-label>
-                                <x-text-input name='search'></x-text-input>
-                            </div>
-                            <div class="mt-5">
-                                <x-primary-button type='submit'>Search</x-primary-button>
-                            </div>
-                        </div>
-                    </form>
+
                     <!-- component -->
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -85,11 +75,11 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Owner
+                                                    location
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Tex Number
+                                                    company
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
@@ -102,37 +92,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($companies as $key => $company)
+                                            @forelse ($branches as $key => $branch)
                                                 <tr class="bg-gray-100 border-b">
                                                     <td
                                                         class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                        {{ $key + $companies->firstItem() }}</td>
+                                                        {{ $key + $branches->firstItem() }}</td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                                                        {{ $company->name }}
+                                                        {{ $branch->name }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                                                        {{ $company->owner }}
+                                                        {{ $branch->location }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                                                        {{ $company->tax_number }}
+                                                        {{ $branch->company->name }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                                                        {{ date_format(date_create($company->created_at), 'Y-m-d h:i:s a') }}
+                                                        {{ date_format(date_create($branch->created_at), 'Y-m-d h:i:s a') }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
                                                         <div class="flex justify-evenly">
                                                             <div>
-                                                                <a href="{{ route('companies.edit', $company->id) }}"><i
+                                                                <a href="{{ route('branches.edit', $branch->id) }}"><i
                                                                         class="text-lg fa-solid fa-pen-to-square"></i></a>
                                                             </div>
                                                             <div>
                                                                 <form method="POST"
-                                                                    action="{{ route('companies.delete', $company->id) }}">
+                                                                    action="{{ route('branches.destroy', $branch->id) }}">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit">
@@ -158,8 +148,8 @@
                             </div>
                         </div>
                     </div>
-                    {{ $companies->links() }}
-                    {{-- {{ $companies->links('pagination::simple-tailwind') } --}}
+                    {{ $branches->links() }}
+                    {{-- {{ $branches->links('pagination::simple-tailwind') } --}}
                 </div>
             </div>
         </div>
