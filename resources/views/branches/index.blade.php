@@ -21,7 +21,7 @@
                         @if (session()->has('added'))
                             <div>
                                 <div
-                                    class="flex items-center justify-center px-2 py-1 m-1 font-medium text-green-100 bg-white bg-green-700 border border-green-700 rounded-md ">
+                                    class="flex items-center justify-center px-2 py-1 m-1 font-medium text-green-100 bg-green-700 border border-green-700 rounded-md ">
                                     <div slot="avatar">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
