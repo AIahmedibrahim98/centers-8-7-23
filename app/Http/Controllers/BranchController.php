@@ -61,7 +61,14 @@ class BranchController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'company_id' => 'required',
+            'location' => 'required',
+        ]);
+        $branch = Branch::findOrFail($id);
+        $branch->update($request->except('_token'));
+        return redirect()->route('branches.index')->with('added', 'Branch Updated');
     }
 
     /**
@@ -69,6 +76,7 @@ class BranchController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Branch::destroy($id);
+        return redirect()->route('branches.index')->with('added', 'Branch Deleted');
     }
 }
