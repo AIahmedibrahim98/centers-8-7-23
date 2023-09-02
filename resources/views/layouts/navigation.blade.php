@@ -7,30 +7,30 @@
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block w-auto text-gray-800 fill-current h-9" /> --}}
-                        <p class="text-lg font-bold text-gray-800">Centers</p>
+                        <p class="text-lg font-bold text-gray-800">{{ __('messages.Centers') }}</p>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('messages.Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.*')">
-                        Companies
+                        {{ __('messages.Companies') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('branches.index')" :active="request()->routeIs('branches.*')">
-                        Branches
+                        {{ __('messages.Branches') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('vendors.index')" :active="request()->routeIs('vendors.*')">
-                        Vendors
+                        {{ __('messages.Vendors') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -55,6 +55,10 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('lang',__('messages.c_lang'))">
+                            {{ __('messages.cc_lang') }}
+                        </x-dropdown-link>
+
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>

@@ -11,6 +11,8 @@ class CompanyController extends Controller
 {
     public function index(Request $request)
     {
+        // dd(app()->getLocale());
+        // app()->setLocale('ar');
         $companies = Company::query();
         if ($request->has('search')) {
             $companies->where('name', 'like', '%' . $request->search . '%')->orWhere('owner', 'like', '%' . $request->search . '%');

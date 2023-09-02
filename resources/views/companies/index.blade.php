@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Companies
+            {{ __('messages.Companies') }}
         </h2>
     </x-slot>
 
@@ -12,8 +12,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-end">
                         <div>
-                            <x-primary-link class="bg-blue-700" href="{{ route('companies.create') }}">Add New
-                                Company</x-primary-link>
+                            <x-primary-link class="bg-blue-700" href="{{ route('companies.create') }}">{{ __('messages.Add New Company') }}</x-primary-link>
                         </div>
                     </div>
                     <!-- component -->
@@ -32,7 +31,7 @@
                                         </svg>
                                     </div>
                                     <div class="flex-initial max-w-full text-xl font-normal">
-                                        <div class="py-2">This is a success messsage
+                                        <div class="py-2">{{ __('messages.This is a success messsage') }}
                                             <div class="text-sm font-base">
                                                 {{ session('added') }}
                                             </div>
@@ -59,11 +58,11 @@
                     <form action="{{ route('companies.index') }}">
                         <div class="flex justify-evenly">
                             <div>
-                                <x-input-label for='Search By Name'>Search By Name Or Owner</x-input-label>
+                                <x-input-label for='Search By Name'>{{ __('messages.Search By Name Or Owner') }}</x-input-label>
                                 <x-text-input name='search'></x-text-input>
                             </div>
                             <div class="mt-5">
-                                <x-primary-button type='submit'>Search</x-primary-button>
+                                <x-primary-button type='submit'>{{ __('messages.Search') }}</x-primary-button>
                             </div>
                         </div>
                     </form>
@@ -81,23 +80,23 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Name
+                                                    {{ __('messages.Name') }}
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Owner
+                                                    {{ __('messages.Owner') }}
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Tex Number
+                                                    {{ __('messages.Tex Number') }}
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Created At
+                                                    {{ __('messages.Created At') }}
                                                 </th>
                                                 <th scope="col"
                                                     class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                                                    Actions
+                                                    {{ __('messages.Actions') }}
                                                 </th>
                                             </tr>
                                         </thead>
@@ -148,7 +147,7 @@
                                                 </tr>
                                             @empty
                                                 <tr colspan='4' class="bg-gray-100 border-b">
-                                                    No Result Yet
+                                                    {{ __('messages.No Result Yet') }}
                                                 </tr>
                                             @endforelse
 
