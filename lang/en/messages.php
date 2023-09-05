@@ -4,7 +4,8 @@ return [
 
 
 
-    'Companies' => 'Companies',
+    'Companies' => '{1} Company|[2,*] Companies',
+    'Companies_t'=>'Companies',
     'Add New Company' => 'Add New Company',
     'This is a success messsage' => 'This is a success messsage',
     'Search By Name Or Owner' => 'Search By Name Or Owner',

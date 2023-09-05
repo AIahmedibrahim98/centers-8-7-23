@@ -20,7 +20,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.*')">
-                        {{ __('messages.Companies') }}
+                        {{ __('messages.Companies_t') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

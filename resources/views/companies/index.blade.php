@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('messages.Companies') }}
+            ( {{ App\Models\Company::count() }} ) {{ trans_choice('messages.Companies', App\Models\Company::count()) }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,8 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-end">
                         <div>
-                            <x-primary-link class="bg-blue-700" href="{{ route('companies.create') }}">{{ __('messages.Add New Company') }}</x-primary-link>
+                            <x-primary-link class="bg-blue-700"
+                                href="{{ route('companies.create') }}">{{ __('messages.Add New Company') }}</x-primary-link>
                         </div>
                     </div>
                     <!-- component -->
@@ -58,7 +59,8 @@
                     <form action="{{ route('companies.index') }}">
                         <div class="flex justify-evenly">
                             <div>
-                                <x-input-label for='Search By Name'>{{ __('messages.Search By Name Or Owner') }}</x-input-label>
+                                <x-input-label
+                                    for='Search By Name'>{{ __('messages.Search By Name Or Owner') }}</x-input-label>
                                 <x-text-input name='search'></x-text-input>
                             </div>
                             <div class="mt-5">
