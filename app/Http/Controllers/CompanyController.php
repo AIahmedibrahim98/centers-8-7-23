@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewCompanyMail;
 use App\Models\Company;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CompanyController extends Controller
 {
     public function index(Request $request)
     {
+        // dd(app()->getLocale());
+        // app()->setLocale('ar');
         $companies = Company::query();
         if ($request->has('search')) {
             $companies->where('name', 'like', '%' . $request->search . '%')->orWhere('owner', 'like', '%' . $request->search . '%');
@@ -45,6 +49,7 @@ class CompanyController extends Controller
         // session()->forget('added');
         // session()->flash('added', 'New Company Added');
         // return redirect()->to('/companies');
+        Mail::to(auth()->user()->email,auth()->user()->name)->send(new NewCompanyMail($company));
         return redirect()->route('companies.index')->with('added', 'New Company Added');
     }
     public function edit($id)
