@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CompanyCollection;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Exception;
@@ -15,10 +16,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-
         try {
             // $companies = Company::all();
-            $companies = CompanyResource::collection(Company::all());
+            // $companies = CompanyResource::collection(Company::all());
+            $companies = new CompanyCollection(Company::all());
             // return $companies;
             return response()->json($companies);
         } catch (Exception $e) {
@@ -99,10 +100,13 @@ class CompanyController extends Controller
     public function destroy(string $id)
     {
         try {
-           Company::destroy($id);
-            return response()->json([
-                'status' => 'Company Deleted',
-            ]);
+            $compony = Company::findOrFail($id);
+            if ($compony) {
+                $compony->delete();
+                return response()->json([
+                    'status' => 'Company Deleted',
+                ]);
+            }
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'faild',
