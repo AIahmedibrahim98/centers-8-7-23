@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\api\CompanyController;
+use App\Http\Controllers\api\UserAuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('companies', CompanyController::class);
+
+
+Route::post('user/auth/login',[UserAuthController::class,'login']);
+Route::post('user/auth/register',[UserAuthController::class,'register']);
+Route::get('user/posts',[PostController::class,'index']);
