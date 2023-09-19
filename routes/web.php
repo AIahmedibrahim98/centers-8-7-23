@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('vendors', VendorController::class)->except('show');
     // Route::resource('branches', BranchController::class)->except('show');
     // Route::resource('branches', BranchController::class)->only('show');
+
+    Route::get('schedule/{course_name?}',[ScheduleController::class,'index']);
+    Route::get('employees/instractors',[EmployeeController::class,'index']);
 });
 
 require __DIR__ . '/auth.php';

@@ -27,6 +27,7 @@ class UserAuthController extends Controller
             ]);
             return response()->json([
                 'status' => 'User Register',
+                'token' => $user->createToken('user')->plainTextToken, // FOR Sanctum
                 'user' => $user
             ]);
         } catch (Exception $e) {
@@ -47,6 +48,7 @@ class UserAuthController extends Controller
                 $user->update(['api_token' => Str::random(64)]);
                 return response()->json([
                     'status' => 'loged',
+                    'token' => $user->createToken('user')->plainTextToken, // FOR Sanctum
                     'user_token' =>  $user->api_token
                 ]);
             }

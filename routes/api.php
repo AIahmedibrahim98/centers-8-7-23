@@ -25,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('companies', CompanyController::class);
 
 
-Route::post('user/auth/login',[UserAuthController::class,'login']);
-Route::post('user/auth/register',[UserAuthController::class,'register']);
-Route::get('user/posts',[PostController::class,'index']);
+Route::post('user/auth/login', [UserAuthController::class, 'login']);
+Route::post('user/auth/register', [UserAuthController::class, 'register']);
+Route::get('user/posts', [PostController::class, 'index']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('user/posts/sanctum', [PostController::class, 'indexSanctum']);
+});

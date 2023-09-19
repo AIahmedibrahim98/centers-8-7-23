@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\ClassRoom::factory(500)->create();
         // \App\Models\Vendor::factory(500)->create();
         // \App\Models\Course::factory(500)->create();
-        \App\Models\Post::factory(500)->create();
+        // \App\Models\Post::factory(500)->create();
+        \App\Models\Video::factory(500)->create();
 
         // foreach (range(1, 500) as $num) {
         //     Employee::find($num)->update(['user_id' => $num]);
