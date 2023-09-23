@@ -19,7 +19,7 @@ class ClassRoomFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'configration' => $this->faker->sentence(),
+            'configuration' => $this->faker->sentence(),
             'capacity' => $this->faker->numberBetween(10, 20),
             'branch_id' => Branch::InRandomOrder()->first()->id,
         ];
