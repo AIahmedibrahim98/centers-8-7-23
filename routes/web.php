@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +57,17 @@ Route::middleware('auth')->group(function () {
     Route::resource('vendors', VendorController::class)->except('show');
     // Route::resource('branches', BranchController::class)->except('show');
     // Route::resource('branches', BranchController::class)->only('show');
+
+    Route::get('schedule/{course_name?}',[ScheduleController::class,'index']);
+    Route::get('employees/instractors',[EmployeeController::class,'index']);
+
+
+    Route::prefix('courses')->as('courses.')->group(function () {
+        Route::get('/create', [CourseController::class, 'create'])->name('create');
+        Route::post('/store', [CourseController::class, 'store'])->name('store');
+    });
+
+    Route::post('get_sub_categories',[CategoryController::class,'get_sub_categories'])->name('get_sub_categories');
 });
 
 require __DIR__ . '/auth.php';

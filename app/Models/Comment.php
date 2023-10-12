@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    public function comments()
+    public function model()
     {
-        return $this->morphMany(Comment::class, 'model');
+        return $this->morphTo();
     }
 }

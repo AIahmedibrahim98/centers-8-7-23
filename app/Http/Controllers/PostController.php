@@ -22,4 +22,9 @@ class PostController extends Controller
             ]);
         }
     }
+
+    public function indexSanctum()
+    {
+        return Post::where('user_id', auth()->id())->get();
+    }
 }

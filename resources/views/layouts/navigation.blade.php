@@ -33,6 +33,11 @@
                         {{ __('messages.Vendors') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('courses.create')" :active="request()->routeIs('courses.*')">
+                        Create Coruse
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
